@@ -5,14 +5,14 @@ type Props = ComponentProps<typeof NextLink> &
   PropsWithChildren<{ href: string }>;
 
 /** `<a>` 拡張。外部リンクの場合はそのまま `<a>` を利用し、内部リンクの場合は `next/link` の `Link` を利用する。 */
-export const Anchor = (props: Props) => {
+export default function Anchor(props: Props) {
   const isExternal = props.href.startsWith('http');
   return isExternal ? (
     <ExternalAnchor {...props} />
   ) : (
     <InternalAnchor {...props} />
   );
-};
+}
 
 const ExternalAnchor = (props: Props) => <a {...props}>{props.children}</a>;
 

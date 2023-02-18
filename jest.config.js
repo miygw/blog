@@ -14,6 +14,7 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   // https://jestjs.io/ja/docs/configuration#github-actions-reporter
   reporters: ['default', 'github-actions'],
+  // パスの解決ルールは、このファイルでも定義する必要がある。
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },

@@ -21,9 +21,5 @@ export const assert = (...params: Parameters<typeof nodeAssert>) => {
 };
 
 /** デコードする。 */
-export const decode = (buffer: string, encoding: BufferEncoding | string) => {
-  const bufferEncoding = encoding as BufferEncoding;
-  if (!bufferEncoding) throw new Error(`不明なエンコード方式 ${encoding}`);
-
-  return Buffer.from(buffer, bufferEncoding).toString();
-};
+export const decode = (buffer: string, encoding: BufferEncoding | string) =>
+  Buffer.from(buffer, encoding as BufferEncoding).toString();

@@ -5,10 +5,7 @@ import { twMerge } from 'tailwind-merge';
 export default function Header(props: { className?: string }) {
   return (
     <header
-      className={twMerge(
-        'w-screen flex flex-col items-center gap-y-2',
-        props.className
-      )}
+      className={twMerge('flex flex-col items-center gap-y-2', props.className)}
     >
       miygw.vercel.app
       <Portrait />

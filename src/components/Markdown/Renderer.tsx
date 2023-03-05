@@ -5,8 +5,9 @@ import { vscDarkPlus as codeStyle } from 'react-syntax-highlighter/dist/cjs/styl
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import styles from './markdown.module.css';
 import { CSSProperties } from 'react';
+import { parseCodeClassName } from '@/libs/react-markdown';
+import styles from './markdown.module.css';
 
 export default function Renderer(props: { md: string }) {
   return (
@@ -22,26 +23,15 @@ export default function Renderer(props: { md: string }) {
 }
 
 function Code(props: CodeProps) {
-  const classNameInfo = parseCodeClassName(props.className);
-  const shouldRenderAsBlock = classNameInfo.language || classNameInfo.fileName;
+  const codeClassNameElements = parseCodeClassName(props.className);
+  const shouldRenderAsBlock =
+    codeClassNameElements.language || codeClassNameElements.fileName;
 
   return shouldRenderAsBlock ? (
-    <CodeBlock classNameInfo={classNameInfo} codeProps={props} />
+    <CodeBlock classNameInfo={codeClassNameElements} codeProps={props} />
   ) : (
     <code className={props.className}>{props.children}</code>
   );
-}
-
-/** react-markdownが生成したcode要素のクラス名を解析する。 */
-function parseCodeClassName(className?: string) {
-  // https://github.com/remarkjs/react-markdown#appendix-b-components
-  const prefix = 'language-';
-  const afterPrefix = className?.split(prefix)?.[1];
-
-  return {
-    language: afterPrefix?.split(':')?.[0],
-    fileName: afterPrefix?.split(':')?.[1],
-  };
 }
 
 type CodeBlockProps = {

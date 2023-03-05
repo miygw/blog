@@ -3,12 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 export default function Footer(props: { className?: string }) {
   return (
-    <footer
-      className={twMerge(
-        'w-screen flex justify-center gap-x-5',
-        props.className
-      )}
-    >
+    <footer className={twMerge('flex justify-center gap-x-5', props.className)}>
       <Item text='Twitter' href='https://twitter.com/6emcSYackedM6ar' />
       <Item text='GitHub' href='https://github.com/miygw' />
     </footer>

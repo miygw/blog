@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: yarn
-      - name: yarn
+      - name: yarn setup
         run: yarn
+      - name: validate codes format
+        run: yarn format
       - name: test
         run: yarn jest

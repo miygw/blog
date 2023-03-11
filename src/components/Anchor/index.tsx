@@ -1,12 +1,12 @@
-import { ComponentProps, PropsWithChildren } from 'react';
-import { default as NextLink } from 'next/link';
+import { ComponentProps, PropsWithChildren } from "react";
+import { default as NextLink } from "next/link";
 
 type Props = ComponentProps<typeof NextLink> &
   PropsWithChildren<{ href: string }>;
 
 /** `<a>` 拡張。外部リンクの場合はそのまま `<a>` を利用し、内部リンクの場合は `next/link` の `Link` を利用する。 */
 export default function Anchor(props: Props) {
-  const isExternal = props.href.startsWith('http');
+  const isExternal = props.href.startsWith("http");
   return isExternal ? (
     <ExternalAnchor {...props} />
   ) : (

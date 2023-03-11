@@ -1,13 +1,13 @@
-import ReactMarkdown from 'react-markdown';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus as codeStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import { CSSProperties } from 'react';
-import { parseCodeClassName } from '@/libs/react-markdown';
-import styles from './markdown.module.css';
+import ReactMarkdown from "react-markdown";
+import { CodeProps } from "react-markdown/lib/ast-to-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus as codeStyle } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { CSSProperties } from "react";
+import { parseCodeClassName } from "@/libs/react-markdown";
+import styles from "./markdown.module.css";
 
 export default function Renderer(props: { md: string }) {
   return (
@@ -41,9 +41,9 @@ type CodeBlockProps = {
 function CodeBlock(props: CodeBlockProps) {
   const fileName = props.classNameInfo.fileName;
   const borderStyles: CSSProperties = {
-    border: 'solid',
-    borderWidth: '1px',
-    borderColor: 'gray',
+    border: "solid",
+    borderWidth: "1px",
+    borderColor: "gray",
   };
   const customStyle = fileName
     ? { marginTop: 0, ...borderStyles }
@@ -57,7 +57,7 @@ function CodeBlock(props: CodeBlockProps) {
         language={props.classNameInfo.language}
         style={codeStyle}
       >
-        {String(props.codeProps.children).replace(/\n$/, '')}
+        {String(props.codeProps.children).replace(/\n$/, "")}
       </SyntaxHighlighter>
     </>
   );
@@ -65,8 +65,8 @@ function CodeBlock(props: CodeBlockProps) {
 
 function FileName(props: { fileName: string }) {
   return (
-    <div className='mb-0'>
-      <span className='bg-black px-2 py-1 text-gray-400 text-xs'>
+    <div className="mb-0">
+      <span className="bg-black px-2 py-1 text-xs text-gray-400">
         {props.fileName}
       </span>
     </div>

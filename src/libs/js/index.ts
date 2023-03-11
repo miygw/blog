@@ -14,7 +14,7 @@ const fetchCore = async (...params: Parameters<typeof fetch>) => {
 };
 
 /** サーバーサイドでの実行かを判定する */
-export const isServer = () => typeof window === 'undefined';
+export const isServer = () => typeof window === "undefined";
 
 /** クライアントサイドでの実行かを判定する */
 export const isClient = () => !isServer();
